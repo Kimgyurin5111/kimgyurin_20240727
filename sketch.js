@@ -92,3 +92,16 @@ function drawScore() {
     textAlign(LEFT, TOP);
     text("Score: " + score, 10, 10);
 }
+
+function eatBeans() {
+    for (let b of beans) {
+        if (!b.eaten) {
+            let d = dist(px, py, b.x, b.y);
+            if (d < 20) {
+                //반지름 내 들어오면 -> 먹기
+                b.eaten = true;
+                score++;
+            }
+        }
+    }
+}
