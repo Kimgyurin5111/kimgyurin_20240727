@@ -2,7 +2,7 @@ let img;
 
 let px = 100;
 let py = 768;
-let speed = 2;
+let speed = 5;
 
 function preload() {
     img = loadImage("Map.png");
@@ -38,7 +38,7 @@ function movePacman() {
 
 function drawPacman() {
     fill(255, 255, 0);
-    ellipse(px, py, 50, 50);
+    ellipse(px, py, 60, 60);
 }
 
 function isWall(x, y) {
