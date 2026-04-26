@@ -4,6 +4,11 @@ let px = 100;
 let py = 768;
 let speed = 5;
 
+let beans = [];
+let score = 0;
+let beanSize = 6;
+let beanSpacing = 24;
+
 function preload() {
     img = loadImage("Map.png");
 }
@@ -18,6 +23,7 @@ function draw() {
 
     movePacman();
     drawPacman();
+    drawBeans();
 }
 
 function movePacman() {
