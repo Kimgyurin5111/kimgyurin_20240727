@@ -72,7 +72,7 @@ function drawBeans() {}
 function drawScore() {
     fill(255);
     noStroke();
-    textSize(20);
+    textSize(70);
     textAlign(LEFT, TOP);
     text("Score: " + score, 10, 10);
 }
