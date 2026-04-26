@@ -15,6 +15,7 @@ function preload() {
 
 function setup() {
     createCanvas(img.width, img.height);
+    generateBeans();
 }
 
 function draw() {
@@ -24,6 +25,8 @@ function draw() {
     movePacman();
     drawPacman();
     drawBeans();
+    drawScore();
+    eatBeans();
 }
 
 function movePacman() {
@@ -41,11 +44,14 @@ function movePacman() {
         py = ny;
     }
 }
+function generateBeans() {}
 
 function drawPacman() {
     fill(255, 255, 0);
     ellipse(px, py, 60, 60);
 }
+
+function drawBeans() {}
 
 function isWall(x, y) {
     let c = img.get(x, y);
