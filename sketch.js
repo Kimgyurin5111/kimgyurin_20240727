@@ -6,8 +6,8 @@ let speed = 5;
 
 let beans = [];
 let score = 0;
-let beanSize = 6;
-let beanSpacing = 24;
+let beanSize = 10;
+let beanSpacing = 50;
 
 function preload() {
     img = loadImage("Map.png");
