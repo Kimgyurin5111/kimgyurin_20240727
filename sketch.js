@@ -42,6 +42,16 @@ function isWall(x, y) {
     return false;
 }
 
+function isPath(x, y) {
+    let c = img.get(x, y);
+
+    let r = c[0];
+    let g = c[1];
+    let b = c[2];
+
+    return r < 50 && g < 50 && b < 50;
+}
+
 function generateBeans() {
     beans = [];
     for (let x = 0; x < img.width; x += beanSpacing) {
