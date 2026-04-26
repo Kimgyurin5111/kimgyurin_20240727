@@ -35,3 +35,8 @@ function movePacman() {
         py = ny;
     }
 }
+
+function drawPacman() {
+    fill(255, 255, 0);
+    ellipse(px, py, 20, 20);
+}
