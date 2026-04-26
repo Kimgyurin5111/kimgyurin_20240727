@@ -44,6 +44,14 @@ function isWall(x, y) {
 
 function generateBeans() {
     beans = [];
+    for (let x = 0; x < img.width; x += beanSpacing) {
+        for (let y = 0; y < img.height; y += beanSpacing) {
+            if (!isWall(x, y)) {
+                //콩 추가
+                beans.push({ x: x, y: y, eaten: false });
+            }
+        }
+    }
 }
 
 function movePacman() {
