@@ -7,7 +7,7 @@ let speed = 5;
 let beans = [];
 let score = 0;
 let beanSize = 20;
-let beanSpacing = 100;
+let beanSpacing = 90;
 
 function preload() {
     img = loadImage("Map.png");
@@ -22,12 +22,28 @@ function draw() {
     background(0);
     image(img, 0, 0);
 
+    drawMap();
+
     movePacman();
     drawPacman();
     drawBeans();
     drawScore();
     eatBeans();
 }
+function drawMap() {
+    // fill(27, 139, 175);
+    fill(255, 0, 0);
+    rect(0, 692, 563, 10);
+    rect(0, 716, 563, 10);
+    rect(0, 810, 563, 10);
+    rect(0, 835, 563, 10);
+
+    rect(2253, 692, 563, 10);
+    rect(2253, 716, 563, 10);
+    rect(2253, 810, 563, 10);
+    rect(2253, 835, 563, 10);
+}
+
 function isWall(x, y) {
     let c = img.get(x, y);
 
@@ -124,5 +140,5 @@ function eatBeans() {
 }
 function mousePressed() {
     let c = img.get(mouseX, mouseY);
-    console.log("클릭 위치 RGB:", c[0], c[1], c[2]);
+    console.log(mouseX, mouseY);
 }
