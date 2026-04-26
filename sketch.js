@@ -75,7 +75,15 @@ function drawPacman() {
     ellipse(px, py, 60, 60);
 }
 
-function drawBeans() {}
+function drawBeans() {
+    fill(255, 220, 150);
+    noStroke();
+    for (let b of beans) {
+        if (!b.eaten) {
+            ellipse(b.x, b.y, beanSize, beanSize);
+        }
+    }
+}
 
 function drawScore() {
     fill(255);
