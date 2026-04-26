@@ -28,6 +28,23 @@ function draw() {
     drawScore();
     eatBeans();
 }
+function isWall(x, y) {
+    let c = img.get(x, y);
+
+    let r = c[0];
+    let g = c[1];
+    let b = c[2];
+
+    if (b > 100 && g > 100) {
+        return true;
+    }
+
+    return false;
+}
+
+function generateBeans() {
+    beans = [];
+}
 
 function movePacman() {
     let nx = px;
@@ -44,7 +61,6 @@ function movePacman() {
         py = ny;
     }
 }
-function generateBeans() {}
 
 function drawPacman() {
     fill(255, 255, 0);
@@ -53,16 +69,10 @@ function drawPacman() {
 
 function drawBeans() {}
 
-function isWall(x, y) {
-    let c = img.get(x, y);
-
-    let r = c[0];
-    let g = c[1];
-    let b = c[2];
-
-    if (b > 100 && g > 100) {
-        return true;
-    }
-
-    return false;
+function drawScore() {
+    fill(255);
+    noStroke();
+    textSize(20);
+    textAlign(LEFT, TOP);
+    text("Score: " + score, 10, 10);
 }
