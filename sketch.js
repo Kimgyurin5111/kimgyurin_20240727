@@ -15,4 +15,23 @@ function setup() {
 function draw() {
     background(0);
     image(img, 0, 0);
+
+    movePacman();
+    drawPacman();
+}
+
+function movePacman() {
+    let nx = px;
+    let ny = py;
+
+    if (keyIsDown(LEFT_ARROW)) nx -= speed;
+    if (keyIsDown(RIGHT_ARROW)) nx += speed;
+    if (keyIsDown(UP_ARROW)) ny -= speed;
+    if (keyIsDown(DOWN_ARROW)) ny += speed;
+
+    // check wall
+    if (!isWall(nx, ny)) {
+        px = nx;
+        py = ny;
+    }
 }
