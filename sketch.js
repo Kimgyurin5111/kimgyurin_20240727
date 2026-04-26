@@ -1,7 +1,7 @@
 let img;
 
 let px = 100;
-let py = 100;
+let py = 768;
 let speed = 2;
 
 function preload() {
@@ -38,7 +38,7 @@ function movePacman() {
 
 function drawPacman() {
     fill(255, 255, 0);
-    ellipse(px, py, 20, 20);
+    ellipse(px, py, 50, 50);
 }
 
 function isWall(x, y) {
@@ -47,4 +47,10 @@ function isWall(x, y) {
     let r = c[0];
     let g = c[1];
     let b = c[2];
+
+    if (b > 100 && g > 100) {
+        return true;
+    }
+
+    return false;
 }
