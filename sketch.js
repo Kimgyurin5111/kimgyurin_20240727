@@ -6,8 +6,8 @@ let speed = 5;
 
 let beans = [];
 let score = 0;
-let beanSize = 10;
-let beanSpacing = 50;
+let beanSize = 20;
+let beanSpacing = 100;
 
 function preload() {
     img = loadImage("Map.png");
@@ -49,15 +49,14 @@ function isPath(x, y) {
     let g = c[1];
     let b = c[2];
 
-    return r < 50 && g < 50 && b < 50;
+    return b >= 55 && b <= 75 && g < 15;
 }
 
 function generateBeans() {
     beans = [];
-    for (let x = 0; x < img.width; x += beanSpacing) {
-        for (let y = 0; y < img.height; y += beanSpacing) {
-            if (!isWall(x, y)) {
-                //콩 추가
+    for (let x = beanSpacing / 2; x < img.width; x += beanSpacing) {
+        for (let y = beanSpacing / 2; y < img.height; y += beanSpacing) {
+            if (isPath(x, y)) {
                 beans.push({ x: x, y: y, eaten: false });
             }
         }
@@ -122,4 +121,8 @@ function eatBeans() {
             }
         }
     }
+}
+function mousePressed() {
+    let c = img.get(mouseX, mouseY);
+    console.log("클릭 위치 RGB:", c[0], c[1], c[2]);
 }
