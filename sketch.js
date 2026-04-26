@@ -63,8 +63,16 @@ function movePacman() {
     if (keyIsDown(UP_ARROW)) ny -= speed;
     if (keyIsDown(DOWN_ARROW)) ny += speed;
 
+    let r = 28;
+
     // check wall
-    if (!isWall(nx, ny)) {
+    if (
+        !isWall(nx, ny) &&
+        !isWall(nx - r, ny) &&
+        !isWall(nx + r, ny) &&
+        !isWall(nx, ny - r) &&
+        !isWall(nx, ny + r)
+    ) {
         px = nx;
         py = ny;
     }
