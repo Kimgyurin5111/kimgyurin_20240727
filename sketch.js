@@ -14,6 +14,12 @@ let height = 1536;
 
 let beansGenerated = false;
 
+let energy = 3;
+let enemies = [];   
+let gameState = "playing"; // "playing", "win", "lose"
+let invincible = false; 
+let invincibleTimer = 0;
+
 function preload() {
     //img = loadImage("Map.png");
 }
