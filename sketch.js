@@ -765,3 +765,9 @@ function addEnemy() {
         dy: 0,
     });
 }
+
+let targetEnemies = 5 + int(score / 10);
+
+if (targetEnemies > 10) {
+    targetEnemies = 10;
+}
