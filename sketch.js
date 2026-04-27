@@ -9,18 +9,21 @@ let score = 0;
 let beanSize = 20;
 let beanSpacing = 90;
 
+let width = 2816;
+let height = 1536;
+
 function preload() {
-    img = loadImage("Map.png");
+    //img = loadImage("Map.png");
 }
 
 function setup() {
-    createCanvas(img.width, img.height);
+    createCanvas(width, height);
     generateBeans();
 }
 
 function draw() {
     background(0);
-    image(img, 0, 0);
+    //image(img, 0, 0);
 
     drawInMap();
     drawOutLeftMap();
@@ -328,14 +331,59 @@ function drawOutMap() {
 }
 
 function drawInMap() {
-    fill(0, 255, 0);
+    fill(2,9,64);
 
     rect(0, 726, 570, 90);
     rect(2250, 726, 570, 90);
 
     rect(376, 81, 1000, 96);
     rect(1443, 81, 1000, 96);
+    rect(376, 81, 90, 400);
+    rect(617, 175, 120, 120);
+    rect(1285, 159, 98, 120);
+    rect(1439, 157, 95, 120);
+    rect(2092, 174, 110, 100);
+    rect(2352, 172, 100, 332);
+    rect(617, 360, 70, 70);
+    rect(969, 366, 100, 100);
+    rect(1135, 362, 97, 100);
+    rect(1585, 363, 100, 100);
+    rect(1743, 362, 100, 100);
+    rect(2130, 370, 70, 100);
+
+    rect(1131, 632, 110, 400);
+    rect(1578, 632, 110, 400);
+    rect(676, 573, 80, 380);
+    rect(970, 573, 100, 450);
+    rect(1743, 573, 100, 450);
+    rect(2062, 573, 190, 380);
+
+    rect(755, 573, 220, 90);
+    rect(1837, 573, 230, 90);
+    rect(755, 864, 220, 90);
+    rect(1837, 864, 230, 90);
+
+    rect(757, 506, 100, 100);
+    rect(1286, 506, 95, 100);
+    rect(1440, 506, 95, 100);
+    rect(1952, 506, 105, 100);
+    rect(2133, 506, 115, 100);
+
+    rect(1061, 721, 100, 90);
+    rect(1677, 725, 100, 90);
+    rect(2140, 952, 110, 90);
+
     rect(376, 273, 702, 102);
+    rect(1738, 273, 702, 102);
+    rect(1072, 272, 700, 92);
+
+    rect(1133, 423, 250, 94);
+    rect(1443, 423, 245, 94);
+    rect(1133, 574, 550, 92);
+    rect(1133, 865, 550, 92);
+    rect(1748, 421, 310, 97);
+    rect(2131, 421, 310, 87);
+
     rect(376, 420, 305, 96);
     rect(762, 420, 306, 97);
 
@@ -359,7 +407,7 @@ function drawInMap() {
     rect(831, 1059, 100, 100);
     rect(1288, 1064, 100, 100);
     rect(1430, 1075, 100, 100);
-    rect(1880, 1080, 105 ,100);
+    rect(1880, 1080, 105, 100);
     rect(2295, 1088, 100, 300);
 
     rect(966, 1201, 105, 100);
@@ -371,13 +419,11 @@ function drawInMap() {
     rect(1284, 1328, 102, 100);
     rect(1427, 1311, 100, 100);
 
-
     rect(2140, 1087, 103, 238);
-
 }
 
 function isWall(x, y) {
-    let c = img.get(x, y);
+    let c = get(x, y);
 
     let r = c[0];
     let g = c[1];
@@ -391,7 +437,7 @@ function isWall(x, y) {
 }
 
 function isPath(x, y) {
-    let c = img.get(x, y);
+    let c = get(x, y);
 
     let r = c[0];
     let g = c[1];
@@ -402,8 +448,8 @@ function isPath(x, y) {
 
 function generateBeans() {
     beans = [];
-    for (let x = beanSpacing / 2; x < img.width; x += beanSpacing) {
-        for (let y = beanSpacing / 2; y < img.height; y += beanSpacing) {
+    for (let x = beanSpacing / 2; x < width; x += beanSpacing) {
+        for (let y = beanSpacing / 2; y < height; y += beanSpacing) {
             if (isPath(x, y)) {
                 beans.push({ x: x, y: y, eaten: false });
             }
@@ -469,8 +515,4 @@ function eatBeans() {
             }
         }
     }
-}
-function mousePressed() {
-    let c = img.get(mouseX, mouseY);
-    console.log(mouseX, mouseY);
 }
