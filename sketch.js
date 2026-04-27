@@ -18,6 +18,8 @@ let energy = 3;
 let enemies = [];
 let gameState = "playing"; // "playing", "win", "lose"
 
+let collisionCooldown = 0;
+
 function preload() {
     //img = loadImage("Map.png");
 }
@@ -681,7 +683,7 @@ function drawGameOver() {
 }
 
 function keyPressed() {
-    if (key === 'r' || key === 'R') {
+    if (key === "r" || key === "R") {
         restartGame();
     }
 }
@@ -695,4 +697,20 @@ function restartGame() {
     invincible = false;
     beansGenerated = false;
     generateEnemies();
+}
+
+function checkEnemyCollision() {
+    if (collisionCooldown > 0) {
+        collisionCooldown--;
+        return;
+    }
+
+    for (let e of enemies) {
+        if (dist(px, py, e.x, e.y) < 50) {
+            energy--;
+            collisionCooldown = 60;
+            if (energy <= 0) gameState = "lose";
+            break;
+        }
+    }
 }
