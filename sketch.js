@@ -22,9 +22,11 @@ function draw() {
     background(0);
     image(img, 0, 0);
 
+    drawInMap();
     drawOutLeftMap();
     drawOutRightMap();
-    drawInMap();
+    drawOutMap();
+    
 
     movePacman();
     drawPacman();
@@ -100,6 +102,7 @@ function drawOutLeftMap() {
     rect(2430, 985, 10, 493);
     rect(2395, 1008, 10, 447);
 }
+
 function drawOutRightMap() {
     fill(27, 139, 175);
 
@@ -189,7 +192,8 @@ function drawOutRightMap() {
     rect(1688, 1209, 60, 10);
     rect(1526, 1356, 773, 10);
 }
-function drawInMap() {
+
+function drawOutMap() {
     fill(27, 139, 175);
 
     rect(470, 167, 141, 10);
@@ -322,6 +326,23 @@ function drawInMap() {
     rect(1233, 855, 350, 10);
     rect(1233, 658, 10, 200);
     rect(1573, 658, 10, 200);
+}
+
+function drawInMap(){
+    fill(0,255,0);
+
+    rect(0, 726, 570, 90);
+    rect(2250, 726, 570, 90);
+
+    rect(376, 81, 1000, 96);
+    rect(376, 273, 702, 102);
+    rect(376, 420, 305, 96);
+    rect(762, 420, 306, 97);
+
+    rect(422, 1008, 965, 88);
+    
+    rect(422, 1366, 1973, 97);
+
 }
 
 function isWall(x, y) {
