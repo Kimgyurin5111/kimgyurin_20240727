@@ -728,6 +728,8 @@ function restartGame() {
     gameState = "playing";
     invincible = false;
     beansGenerated = false;
+    enemies = [];
+    
     generateEnemies();
 }
 
