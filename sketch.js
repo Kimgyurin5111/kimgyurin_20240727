@@ -12,6 +12,8 @@ let beanSpacing = 90;
 let width = 2816;
 let height = 1536;
 
+let beansGenerated = false;
+
 function preload() {
     //img = loadImage("Map.png");
 }
@@ -29,6 +31,11 @@ function draw() {
     drawOutLeftMap();
     drawOutRightMap();
     drawOutMap();
+
+    if (!beansGenerated) {
+        generateBeans();
+        beansGenerated = true;
+    }
 
     movePacman();
     drawPacman();
