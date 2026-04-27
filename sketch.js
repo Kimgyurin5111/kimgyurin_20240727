@@ -547,7 +547,16 @@ function movePacman() {
 
 function drawPacman() {
     fill(255, 255, 0);
-    ellipse(px, py, 40, 40);
+
+    mouth = (abs(sin(frameCount * 0.1)) * PI) / 4;
+
+    push();
+    translate(px, py);
+    rotate(angle);
+
+    arc(0, 0, 40, 40, mouth, TWO_PI - mouth, PIE);
+
+    pop();
 }
 
 function drawBeans() {
