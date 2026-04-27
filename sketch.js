@@ -571,3 +571,35 @@ function generateEnemies() {
         });
     }
 }
+
+function moveEnemies() {
+    for (let e of enemies) {
+        let nx = e.x + e.dx;
+        let ny = e.y + e.dy;
+
+        if (
+            isWall(nx, ny) ||
+            isWall(nx - 20, ny) ||
+            isWall(nx + 20, ny) ||
+            isWall(nx, ny - 20) ||
+            isWall(nx, ny + 20)
+        ) {
+            //random
+            let dirs = [
+                { dx: 2, dy: 0 },
+                { dx: -2, dy: 0 },
+                { dx: 0, dy: 2 },
+                { dx: 0, dy: -2 },
+            ];
+            let newDir = random(dirs);
+            e.dx = newDir.dx;
+            e.dy = newDir.dy;
+        } else {
+            e.x = nx;
+            e.y = ny;
+        }
+
+        if (e.x < 0) e.x = width;
+        if (e.x > width) e.x = 0;
+    }
+}
