@@ -17,8 +17,6 @@ let beansGenerated = false;
 let energy = 3;
 let enemies = [];
 let gameState = "playing"; // "playing", "win", "lose"
-let invincible = false;
-let invincibleTimer = 0;
 
 function preload() {
     //img = loadImage("Map.png");
@@ -44,12 +42,6 @@ function draw() {
     }
 
     if (gameState === "playing") {
-        // 무적 타이머
-        if (invincible) {
-            invincibleTimer--;
-            if (invincibleTimer <= 0) invincible = false;
-        }
-
         movePacman();
         moveEnemies();
         eatBeans();
@@ -624,16 +616,44 @@ function moveEnemies() {
 
 function drawEnemies() {
     for (let e of enemies) {
-
         fill(255, 0, 0);
         noStroke();
         ellipse(e.x, e.y, 60, 60);
-        
+
         fill(255);
         ellipse(e.x - 10, e.y - 8, 16, 16);
         ellipse(e.x + 10, e.y - 8, 16, 16);
         fill(0, 0, 255);
         ellipse(e.x - 10, e.y - 8, 8, 8);
         ellipse(e.x + 10, e.y - 8, 8, 8);
+    }
+}
+
+function checkEnemyCollision() {
+    for (let e of enemies) {
+        if (dist(px, py, e.x, e.y) < 50) {
+            energy--;
+
+            if (energy <= 0) gameState = "lose";
+            break;
+        }
+    }
+}
+
+function checkWin() {
+    let allEaten = beans.every((b) => b.eaten);
+    if (allEaten) gameState = "win";
+}
+
+function drawScore() {
+    fill(255);
+    noStroke();
+    textSize(70);
+    textAlign(LEFT, TOP);
+    text("Score: " + score, 10, 10);
+
+    textSize(80);
+    for (let i = 0; i < energy; i++) {
+        text("♥", 10 + i * 90, 90);
     }
 }
