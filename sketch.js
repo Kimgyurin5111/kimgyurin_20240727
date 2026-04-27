@@ -457,7 +457,13 @@ function generateBeans() {
     beans = [];
     for (let x = beanSpacing / 2; x < width; x += beanSpacing) {
         for (let y = beanSpacing / 2; y < height; y += beanSpacing) {
-            if (isPath(x, y)) {
+            if (
+                isPath(x, y) &&
+                isPath(x - 3, y) &&
+                isPath(x + 3, y) &&
+                isPath(x, y - 3) &&
+                isPath(x, y + 3)
+            ) {
                 beans.push({ x: x, y: y, eaten: false });
             }
         }
@@ -473,7 +479,7 @@ function movePacman() {
     if (keyIsDown(UP_ARROW)) ny -= speed;
     if (keyIsDown(DOWN_ARROW)) ny += speed;
 
-    let r = 28;
+    let r = 20;
 
     // check wall
     if (
@@ -505,7 +511,7 @@ function movePacman() {
 
 function drawPacman() {
     fill(255, 255, 0);
-    ellipse(px, py, 60, 60);
+    ellipse(px, py, 40, 40);
 }
 
 function drawBeans() {
@@ -530,8 +536,7 @@ function eatBeans() {
     for (let b of beans) {
         if (!b.eaten) {
             let d = dist(px, py, b.x, b.y);
-            if (d < 20) {
-                //반지름 내 들어오면 -> 먹기
+            if (d < 60) {
                 b.eaten = true;
                 score++;
             }
