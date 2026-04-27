@@ -657,3 +657,26 @@ function drawScore() {
         text("♥", 10 + i * 90, 90);
     }
 }
+
+function drawGameOver() {
+    fill(0, 0, 0, 180);
+    rect(0, 0, width, height);
+
+    textAlign(CENTER, CENTER);
+
+    if (gameState === "win") {
+        fill(255, 255, 0);
+        textSize(120);
+        text("🎉 WIN!", width / 2, height / 2 - 100);
+    } else {
+        fill(255, 0, 0);
+        textSize(120);
+        text("GAME OVER", width / 2, height / 2 - 100);
+    }
+
+    fill(255);
+    textSize(60);
+    text("Score: " + score, width / 2, height / 2 + 50);
+    text("Press R to restart", width / 2, height / 2 + 150);
+}
+
