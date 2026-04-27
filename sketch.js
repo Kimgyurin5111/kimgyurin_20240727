@@ -48,12 +48,25 @@ function draw() {
         beansGenerated = true;
     }
 
+    let targetEnemies = 5 + floor(score / 5);
+
+    if (targetEnemies > 10) {
+        targetEnemies = 10;
+    }
+
     if (gameState === "playing") {
         movePacman();
         moveEnemies();
         eatBeans();
         checkEnemyCollision();
         checkWin();
+
+        while (enemies.length < targetEnemies) {
+            addEnemy();
+        }
+        while (enemies.length > targetEnemies) {
+            enemies.pop();
+        }
     }
 
     drawBeans();
@@ -63,12 +76,6 @@ function draw() {
 
     if (gameState !== "playing") {
         drawGameOver();
-    }
-
-    let targetEnemies = 5 + floor(score / 5);
-
-    while (enemies.length < targetEnemies) {
-        addEnemy();
     }
 }
 
@@ -729,7 +736,7 @@ function restartGame() {
     invincible = false;
     beansGenerated = false;
     enemies = [];
-    
+
     generateEnemies();
 }
 
@@ -766,10 +773,4 @@ function addEnemy() {
         dx: random([-2, 2]),
         dy: 0,
     });
-}
-
-let targetEnemies = 5 + int(score / 10);
-
-if (targetEnemies > 10) {
-    targetEnemies = 10;
 }
