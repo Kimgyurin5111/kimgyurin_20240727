@@ -23,6 +23,8 @@ let collisionCooldown = 0;
 let angle = 0;
 let mouth = 0;
 
+let maxEnemies = 5;
+
 function preload() {
     //img = loadImage("Map.png");
 }
