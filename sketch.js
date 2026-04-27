@@ -20,6 +20,9 @@ let gameState = "playing"; // "playing", "win", "lose"
 
 let collisionCooldown = 0;
 
+let angle = 0;
+let mouth = 0;
+
 function preload() {
     //img = loadImage("Map.png");
 }
@@ -492,10 +495,22 @@ function movePacman() {
     let nx = px;
     let ny = py;
 
-    if (keyIsDown(LEFT_ARROW)) nx -= speed;
-    if (keyIsDown(RIGHT_ARROW)) nx += speed;
-    if (keyIsDown(UP_ARROW)) ny -= speed;
-    if (keyIsDown(DOWN_ARROW)) ny += speed;
+    if (keyIsDown(LEFT_ARROW)) {
+        nx -= speed;
+        angle = PI;
+    }
+    if (keyIsDown(RIGHT_ARROW)) {
+        nx += speed;
+        angle = 0;
+    }
+    if (keyIsDown(UP_ARROW)) {
+        ny -= speed;
+        angle = -HALF_PI;
+    }
+    if (keyIsDown(DOWN_ARROW)) {
+        ny += speed;
+        angle = HALF_PI;
+    }
 
     let r = 20;
 
