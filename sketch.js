@@ -552,3 +552,22 @@ function eatBeans() {
         }
     }
 }
+
+function generateEnemies() {
+    enemies = [];
+    // 길 위의 랜덤 위치에 적 5개 생성
+    let pathCells = [];
+    for (let x = 100; x < width - 100; x += beanSpacing) {
+        for (let y = 100; y < height - 100; y += beanSpacing) {
+            if (isPath(x, y)) pathCells.push({x, y});
+        }
+    }
+    for (let i = 0; i < 5; i++) {
+        let pos = random(pathCells);
+        enemies.push({
+            x: pos.x, y: pos.y,
+            dx: random([-2, 2]),  // 이동 방향
+            dy: 0
+        });
+    }
+}
