@@ -31,7 +31,6 @@ function setup() {
 
 function draw() {
     background(0);
-    //image(img, 0, 0);
 
     drawInMap();
     drawOutLeftMap();
@@ -40,15 +39,34 @@ function draw() {
 
     if (!beansGenerated) {
         generateBeans();
+        generateEnemies();
         beansGenerated = true;
     }
 
-    movePacman();
-    drawPacman();
+    if (gameState === "playing") {
+        // 무적 타이머
+        if (invincible) {
+            invincibleTimer--;
+            if (invincibleTimer <= 0) invincible = false;
+        }
+
+        movePacman();
+        moveEnemies();
+        eatBeans();
+        checkEnemyCollision();
+        checkWin();
+    }
+
     drawBeans();
+    drawEnemies();
+    drawPacman();
     drawScore();
-    eatBeans();
+
+    if (gameState !== "playing") {
+        drawGameOver();
+    }
 }
+
 function drawOutLeftMap() {
     fill(27, 139, 175);
 
@@ -601,5 +619,21 @@ function moveEnemies() {
 
         if (e.x < 0) e.x = width;
         if (e.x > width) e.x = 0;
+    }
+}
+
+function drawEnemies() {
+    for (let e of enemies) {
+
+        fill(255, 0, 0);
+        noStroke();
+        ellipse(e.x, e.y, 60, 60);
+        
+        fill(255);
+        ellipse(e.x - 10, e.y - 8, 16, 16);
+        ellipse(e.x + 10, e.y - 8, 16, 16);
+        fill(0, 0, 255);
+        ellipse(e.x - 10, e.y - 8, 8, 8);
+        ellipse(e.x + 10, e.y - 8, 8, 8);
     }
 }
