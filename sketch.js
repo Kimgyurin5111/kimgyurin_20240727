@@ -740,3 +740,22 @@ function checkEnemyCollision() {
         }
     }
 }
+
+function addEnemy() {
+    let pathCells = [];
+
+    for (let x = 100; x < width - 100; x += beanSpacing) {
+        for (let y = 100; y < height - 100; y += beanSpacing) {
+            if (isPath(x, y)) pathCells.push({ x, y });
+        }
+    }
+
+    let pos = random(pathCells);
+
+    enemies.push({
+        x: pos.x,
+        y: pos.y,
+        dx: random([-2, 2]),
+        dy: 0,
+    });
+}
