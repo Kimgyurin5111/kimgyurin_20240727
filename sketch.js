@@ -507,6 +507,9 @@ function movePacman() {
     ) {
         py = ny;
     }
+
+    if (px < 0) px = width;
+    if (px > width) px = 0;
 }
 
 function drawPacman() {
