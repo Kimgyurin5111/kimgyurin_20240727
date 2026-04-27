@@ -680,3 +680,19 @@ function drawGameOver() {
     text("Press R to restart", width / 2, height / 2 + 150);
 }
 
+function keyPressed() {
+    if (key === 'r' || key === 'R') {
+        restartGame();
+    }
+}
+
+function restartGame() {
+    px = 100;
+    py = 768;
+    score = 0;
+    energy = 3;
+    gameState = "playing";
+    invincible = false;
+    beansGenerated = false;
+    generateEnemies();
+}
