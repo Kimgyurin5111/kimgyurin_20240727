@@ -331,7 +331,7 @@ function drawOutMap() {
 }
 
 function drawInMap() {
-    fill(2,9,64);
+    fill(2, 9, 64);
 
     rect(0, 726, 570, 90);
     rect(2250, 726, 570, 90);
@@ -470,13 +470,28 @@ function movePacman() {
 
     // check wall
     if (
-        !isWall(nx, ny) &&
-        !isWall(nx - r, ny) &&
-        !isWall(nx + r, ny) &&
-        !isWall(nx, ny - r) &&
-        !isWall(nx, ny + r)
+        !isWall(nx - r, py - r) &&
+        !isWall(nx + r, py - r) &&
+        !isWall(nx - r, py + r) &&
+        !isWall(nx + r, py + r) &&
+        !isWall(nx - r, py) &&
+        !isWall(nx + r, py) &&
+        !isWall(nx, py - r) &&
+        !isWall(nx, py + r)
     ) {
         px = nx;
+    }
+
+    if (
+        !isWall(px - r, ny - r) &&
+        !isWall(px + r, ny - r) &&
+        !isWall(px - r, ny + r) &&
+        !isWall(px + r, ny + r) &&
+        !isWall(px - r, ny) &&
+        !isWall(px + r, ny) &&
+        !isWall(px, ny - r) &&
+        !isWall(px, ny + r)
+    ) {
         py = ny;
     }
 }
