@@ -64,6 +64,12 @@ function draw() {
     if (gameState !== "playing") {
         drawGameOver();
     }
+
+    let targetEnemies = 5 + floor(score / 5);
+
+    while (enemies.length < targetEnemies) {
+        addEnemy();
+    }
 }
 
 function drawOutLeftMap() {
