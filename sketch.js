@@ -48,7 +48,7 @@ function draw() {
         beansGenerated = true;
     }
 
-    let targetEnemies = 5 + floor(score / 5);
+    let targetEnemies = 5 + floor(score / 10);
 
     if (targetEnemies > 10) {
         targetEnemies = 10;
